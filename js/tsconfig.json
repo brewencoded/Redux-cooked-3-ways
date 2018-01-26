@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react",
+        "sourceMap": true,
+        "lib": ["es2017", "dom"],
+        "declaration": true
+    }
+}

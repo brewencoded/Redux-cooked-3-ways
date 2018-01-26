@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-react"
+    ],
+    "jsRules": {},
+    "rules": {
+        "no-namespace": false,
+        "quotemark": [true, "single", "jsx-double"],
+        "ordered-imports": false,
+        "no-console": false,
+        "trailing-comma": false,
+        "max-classes-per-file": false
+    },
+    "rulesDirectory": []
+}
