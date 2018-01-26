@@ -4,7 +4,8 @@ const lint = require('gulp-tslint');
 const mocha = require('gulp-mocha');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
-// use a tsconfig file
+const WebpackDevServer = require('webpack-dev-server');
+const PORT = 8080;
 
 gulp.task('clean', () => gulp
     .src('./dist/*', {read: false})
@@ -24,11 +25,29 @@ gulp.task('lint', () => gulp
 gulp.task('bundle', ['clean', 'lint'], (callback) => {
     // run webpack
     webpack(webpackConfig, function(err, stats) {
-        if(err) throw new Error("webpack", err);
-       console.log("[webpack]", stats.toString({
+        if (err) throw new Error('webpack', err);
+        console.log('[webpack]', stats.toString({
             // output options
         }));
         callback()
+    });
+});
+
+gulp.task('webpack-dev-server', (cb) => {
+    const options = {
+        contentBase: './dist',
+        hot: true,
+        host: 'localhost'
+    };
+
+    WebpackDevServer.addDevServerEntrypoints(webpackConfig, options);
+    const compiler = webpack(webpackConfig);
+    const server = new WebpackDevServer(compiler, options);
+    
+    server.listen(PORT, 'localhost', (err) => {
+        if (err) throw new Error('webpack', err);
+        console.log('[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html');
+        cb();
     });
 });
 
@@ -51,4 +70,4 @@ gulp.task('tdd', () => {
 gulp.task('js-watch', () => gulp.watch(['src/**/*.tsx', 'trilithium/*.tsx'], ['bundle']));
 
 gulp.task('dev', ['test', 'bundle']);
-gulp.task('dev:watch', ['js-watch']);
+gulp.task('dev:watch', ['webpack-dev-server']);

@@ -4,7 +4,8 @@
   "description": "Redux pattern from scratch with ReactJS",
   "main": "src/index.js",
   "scripts": {
-    "dev": "gulp dev",
+    "build": "gulp dev",
+    "dev": "gulp dev:watch",
     "test": "gulp test",
     "lint": "gulp lint"
   },
@@ -22,6 +23,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-mocha": "^5.0.0",
     "gulp-tslint": "^8.1.2",
+    "html-webpack-plugin": "^2.30.1",
     "mocha": "^5.0.0",
     "sinon": "^4.2.1",
     "ts-loader": "^3.3.1",
@@ -29,7 +31,8 @@
     "tslint": "^5.9.1",
     "tslint-react": "^3.4.0",
     "typescript": "^2.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
     "react": "^16.2.0",

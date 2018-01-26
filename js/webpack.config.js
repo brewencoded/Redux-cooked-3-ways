@@ -1,7 +1,11 @@
 const DeclarationBundlerPlugin = require('./DeclarationBundlerPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: {
+        app: './src/index.tsx'
+    },
     output: {
         path: __dirname + '/dist',
         filename: 'bundle.js',
@@ -21,12 +25,21 @@ module.exports = {
             }
         ]
     },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './dist',
+    },
     plugins: [
         new DeclarationBundlerPlugin({
             moduleName: 'app',
             out: 'bundle.d.ts'
-        })
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Redux App',
+            template: 'src/index.html'
+        }),
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
-    devtool: 'source-map',
     target: 'web'
 };
