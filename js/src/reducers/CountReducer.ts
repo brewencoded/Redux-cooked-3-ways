@@ -1,5 +1,6 @@
 import {
-    INCREMENT
+    INCREMENT,
+    DECREMENT
 } from '../constants';
 
 const InitialState = {
@@ -16,6 +17,11 @@ const CountReducer = (state = InitialState, action) => {
                 ...state,
                 count: state.count + action.payload.amount
             };
+        case DECREMENT:
+            return {
+                ...state,
+                count: state.count - action.payload.amount
+            }
         default:
             return state;
     }

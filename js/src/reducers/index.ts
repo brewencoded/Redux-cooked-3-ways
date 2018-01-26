@@ -1,2 +1,2 @@
-export { default as IncrementReducer } from './IncrementReducer';
-
+export { default as CountReducer } from './CountReducer';
+export { default as ConcatReducer } from './ConcatReducer';

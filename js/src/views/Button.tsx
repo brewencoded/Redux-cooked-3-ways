@@ -1,9 +1,5 @@
 import * as React from 'react';
 
-import {
-    IncrementAction
-} from '../actions';
-
 const style = {
     color: 'white',
     backgroundColor: '#4caf50',
@@ -15,11 +11,8 @@ const style = {
 };
 
 const Button = (props) => {
-    const click = () => {
-        props.dispatch(IncrementAction(1));
-    };
     return (
-       <button style={style} onClick={click}>Click Me</button>
+       <button style={style} onClick={props.onClick}>{props.children}</button>
     );
 };
 

@@ -4,7 +4,7 @@ import {
 
 const createStore = (reducer) => {
   let onChange;
-  let state = reducer(undefined, {
+  let state = reducer({}, {
     type: INCREMENT,
     payload: {
       amount: 0
