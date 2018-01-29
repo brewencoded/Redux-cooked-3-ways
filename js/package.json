@@ -6,26 +6,24 @@
   "scripts": {
     "build": "gulp dev",
     "dev": "gulp dev:watch",
-    "test": "gulp test",
+    "test": "jest",
     "lint": "gulp lint"
   },
   "author": "Victor Rodriguez",
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.1.2",
-    "@types/mocha": "^2.2.47",
+    "@types/jest": "^22.1.0",
     "@types/node": "^9.3.0",
     "@types/promise": "^7.1.30",
     "@types/react": "^16.0.35",
     "@types/react-dom": "^16.0.3",
-    "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
-    "gulp-mocha": "^5.0.0",
     "gulp-tslint": "^8.1.2",
     "html-webpack-plugin": "^2.30.1",
-    "mocha": "^5.0.0",
-    "sinon": "^4.2.1",
+    "jest": "^22.1.4",
+    "ts-jest": "^22.0.2",
     "ts-loader": "^3.3.1",
     "ts-node": "^4.1.0",
     "tslint": "^5.9.1",
@@ -37,5 +35,19 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

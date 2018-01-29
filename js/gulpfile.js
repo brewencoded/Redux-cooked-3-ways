@@ -1,7 +1,6 @@
 const clean = require('gulp-clean');
 const gulp = require('gulp');
 const lint = require('gulp-tslint');
-const mocha = require('gulp-mocha');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const WebpackDevServer = require('webpack-dev-server');
@@ -51,23 +50,7 @@ gulp.task('webpack-dev-server', (cb) => {
     });
 });
 
-gulp.task('test', () => gulp
-    .src('./test/**/*.ts')
-    .pipe(mocha({
-        reporter: 'progress',
-        require: ['ts-node/register']
-    }))
-    .on('error', (err) => {
-        console.dir(err);
-    })
-);
-
-gulp.task('tdd', () => {
-    return gulp.watch(['src/**/*.tsx', 'tests/**/*.ts'], ['test'])
-});
-
-
 gulp.task('js-watch', () => gulp.watch(['src/**/*.tsx', 'trilithium/*.tsx'], ['bundle']));
 
-gulp.task('dev', ['test', 'bundle']);
+gulp.task('dev', ['bundle']);
 gulp.task('dev:watch', ['webpack-dev-server']);
