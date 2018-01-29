@@ -37,6 +37,13 @@
     "react-dom": "^16.2.0"
   },
   "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ],
+    "coverageReporters": [
+      "text"
+    ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
