@@ -1,8 +1,17 @@
 import  {
     CONCAT
 } from '../constants';
+import {
+    IAction
+} from './IAction';
 
-const ConcatAction = (str) => {
+export interface IConcatAction extends IAction {
+    payload: {
+        str: string
+    };
+}
+
+const ConcatAction = (str: string): IConcatAction => {
     return {
         type: CONCAT,
         payload: {

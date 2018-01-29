@@ -7,14 +7,25 @@ import {
 import {
     ConcatAction
 } from '../actions';
+import {
+    IConcatState
+} from '../reducers/ConcatReducer';
+import {
+    IConcatAction
+} from '../actions/ConcatAction';
 
-const Concatter = (props) => {
-    let inputVal = '';
-    const concat = () => {
+export interface IConcatterProps {
+    dispatch: (action: IConcatAction) => void;
+    state: IConcatState;
+}
+
+const Concatter: React.SFC<IConcatterProps> = (props) => {
+    let inputVal: string = '';
+    const concat = (): void => {
         props.dispatch(ConcatAction(inputVal));
         (document.getElementById('thingy') as HTMLInputElement).value = '';
     };
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         inputVal = event.target.value;
     };
 
@@ -22,7 +33,7 @@ const Concatter = (props) => {
         <div>
             <input id="thingy" type="text" onChange={handleChange}/>
             <Button onClick={concat}>Concat</Button>
-            <p>{props.store.str}</p>
+            <p>{props.state.str}</p>
         </div>
     );
 };

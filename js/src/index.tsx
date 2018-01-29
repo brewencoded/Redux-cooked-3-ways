@@ -17,7 +17,7 @@ const reducers = combineReducers({
 });
 const store = createStore(reducers); 
 
-const render = () => {
+const render = (): void => {
     ReactDOM.render(
         <App store={store} />,
         document.getElementById('app')

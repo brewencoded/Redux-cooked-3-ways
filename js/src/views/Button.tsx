@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const style = {
+const style: React.CSSProperties = {
     color: 'white',
     backgroundColor: '#4caf50',
     borderRadius: 4,
@@ -10,7 +10,11 @@ const style = {
     cursor: 'pointer',
 };
 
-const Button = (props) => (
+export interface IButtonProps {
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => any
+}
+
+const Button: React.SFC<IButtonProps> = (props) => (
     <button style={style} onClick={props.onClick}>
         {props.children}
     </button>

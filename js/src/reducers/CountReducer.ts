@@ -2,12 +2,22 @@ import {
     INCREMENT,
     DECREMENT
 } from '../constants';
+import {
+    IDecrementAction
+} from '../actions/DecrementAction';
+import {
+    IIncrementAction
+} from '../actions/IncrementAction';
+
+export interface ICountState {
+    count: number;
+}
 
 const InitialState = {
     count: 0
 };
   
-const CountReducer = (state = InitialState, action) => {
+const CountReducer = (state = InitialState, action: IDecrementAction | IIncrementAction): ICountState => {
     if (!action) {
         return state;
     }

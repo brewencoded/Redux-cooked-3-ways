@@ -1,12 +1,19 @@
 import {
     CONCAT
 } from '../constants';
+import {
+    IConcatAction
+} from '../actions/ConcatAction';
 
-const InitialState = {
+export interface IConcatState {
+    str: string;
+}
+
+const InitialState: IConcatState = {
     str: ''
 };
 
-const ConcatReducer = (state = InitialState, action ) => {
+const ConcatReducer = (state = InitialState, action: IConcatAction ): IConcatState => {
     if (!action) {
         return state;
     }
