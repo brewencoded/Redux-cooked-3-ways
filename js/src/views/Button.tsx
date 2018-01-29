@@ -10,10 +10,10 @@ const style = {
     cursor: 'pointer',
 };
 
-const Button = (props) => {
-    return (
-       <button style={style} onClick={props.onClick}>{props.children}</button>
-    );
-};
+const Button = (props) => (
+    <button style={style} onClick={props.onClick}>
+        {props.children}
+    </button>
+);
 
 export default Button;

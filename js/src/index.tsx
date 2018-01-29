@@ -7,21 +7,21 @@ import createStore from './store/createStore';
 import combineReducers from './helpers/combineReducers';
 
 import {
-  CountReducer,
-  ConcatReducer
+    CountReducer,
+    ConcatReducer
 } from './reducers';
 
 const reducers = combineReducers({
-  counter: CountReducer,
-  concat: ConcatReducer
+    counter: CountReducer,
+    concat: ConcatReducer
 });
 const store = createStore(reducers); 
 
 const render = () => {
-  ReactDOM.render(
-    <App store={store} />,
-    document.getElementById('app')
-  );
+    ReactDOM.render(
+        <App store={store} />,
+        document.getElementById('app')
+    );
 };
 
 store.subscribe(render);
@@ -29,5 +29,5 @@ store.subscribe(render);
 render();
 
 if (module.hot) {
-  module.hot.accept();
+    module.hot.accept();
 }

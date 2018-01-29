@@ -5,13 +5,11 @@ import Concatter from './views/Concatter';
 import Counter from './views/Counter';
 
 // This is our provider: binds to the store and feeds the dumb views
-const App = (props) => {
-  return (
+const App = (props) => (
     <div>
-      <Counter dispatch={props.store.dispatch} store={props.store.getState().counter}/>
-      <Concatter dispatch={props.store.dispatch} store={props.store.getState().concat}/>
+        <Counter dispatch={props.store.dispatch} store={props.store.getState().counter}/>
+        <Concatter dispatch={props.store.dispatch} store={props.store.getState().concat}/>
     </div>
-  );
-};
+);
 
 export default App;

@@ -1,14 +1,14 @@
 import {
     DECREMENT
-  } from '../constants';
+} from '../constants';
   
-  const DecrementAction = (amount) => {
+const DecrementAction = (amount) => {
     return {
-      type: DECREMENT,
-      payload: {
-        amount
-      }
+        type: DECREMENT,
+        payload: {
+            amount
+        }
     };
-  };
+};
   
-  export default DecrementAction;
+export default DecrementAction;
