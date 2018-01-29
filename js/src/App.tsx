@@ -1,6 +1,5 @@
 import * as React from 'react';
-import createStore from './Store';
-import combineReducers from './helpers/combineReducers';
+
 import Button from './views/Button';
 import Concatter from './views/Concatter';
 import Counter from './views/Counter';
