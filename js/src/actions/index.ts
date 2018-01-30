@@ -1,3 +1,3 @@
-export { default as IncrementAction } from './IncrementAction';
-export { default as DecrementAction } from './DecrementAction';
-export { default as ConcatAction } from './ConcatAction';
+export { default as AddTodo } from './AddTodo';
+export { default as RemoveTodo } from './RemoveTodo';
+export { default as CompleteTodo } from './CompleteTodo';
