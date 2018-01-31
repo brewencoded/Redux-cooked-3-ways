@@ -20,6 +20,11 @@ export interface IAppProps {
     store: IStore;
 }
 
+const appStyles = {
+    margin: 0,
+    padding: 0
+};
+
 // get a reference to dispatch and attach it to the components
 // by wrapping the SFC and overriding props
 const mapDispatchToForm = (dispatch) => ({
@@ -35,7 +40,8 @@ const App: React.SFC<IAppProps> = ({ store }) => {
     const FormWithDispatch = connect(mapDispatchToForm, store.dispatch)(Form);
     const TodoListWithDispatch = connect(mapDispatchToTodos, store.dispatch)(TodoList);
     return (
-        <div>
+        <div style={appStyles}>
+            <h1>Todo</h1>
             <FormWithDispatch />
             <TodoListWithDispatch
                 todos={store.getState().todo}

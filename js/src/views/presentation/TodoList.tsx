@@ -6,6 +6,12 @@ import {
     AddTodo
 } from '../../actions';
 
+const ulStyles = {
+    margin: 0,
+    padding: 0,
+    listStyleType: 'none',
+};
+
 const TodoList = ({ todos, completeTodo, removeTodo }) => {
     // Input tracker
     const list = todos.map((todo) => (
@@ -13,7 +19,7 @@ const TodoList = ({ todos, completeTodo, removeTodo }) => {
     ));
 
     return (
-        <ul>
+        <ul style={ulStyles}>
             {list}
         </ul>
     );

@@ -12,10 +12,6 @@ const todoStyle: React.CSSProperties = {
     ...baseStyle,
     backgroundColor: '#4caf50',
 };
-const doneStyle: React.CSSProperties = {
-    ...baseStyle,
-    backgroundColor: '#ff3860',
-};
 
 export interface IButtonProps {
     done: boolean;
@@ -25,7 +21,7 @@ export interface IButtonProps {
 const Button: React.SFC<IButtonProps> = (props) => {
     return (
         <button
-            style={props.done ? todoStyle : doneStyle}
+            style={todoStyle}
             onClick={props.onClick}
         >
             {props.done ? 'Remove' : 'Done'}
