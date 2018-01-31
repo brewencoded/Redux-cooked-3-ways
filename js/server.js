@@ -12,6 +12,9 @@ const PROFILE = {
     email: EMAIL
 };
 const DB_FILE = 'db.json';
+const INIT_DB = {
+    todos: []
+};
 
 router.get('/login', (req, res) => {
     if (req.query.email === EMAIL && req.query.password === PASSWORD) {
@@ -42,12 +45,23 @@ router.get('/profile', (req, res) => {
 
 router.post('/todos', (req, res) => {
     if (req.get('Authorization') === `Bearer ${TOKEN}`) {
-        fs.writeFile(DB_FILE, req.body.todos, (err) => {
-            if (err) console.log(err.message);
-            res.status(200).json({
-                message: 'Success'
+        if (fs.existsSync(DB_FILE)) {
+            fs.readFile(DB_FILE, (err, data) => {
+                const contents = JSON.parse(data);
+                contents.todos = req.body.data.todos;
+                fs.writeFile(DB_FILE, contents, (err) => {
+                    res.status(200).json({
+                        message: 'Success'
+                    });
+                });
+            })
+        } else {
+            fs.writeFile(DB_FILE, INIT_DB, (err) => {
+                res.status(200).json({
+                    message: 'Success'
+                });
             });
-        })
+        }
     } else {
         res.status(401).json({
             message: 'You are not authorized to modify this content' 
@@ -56,16 +70,22 @@ router.post('/todos', (req, res) => {
 });
 
 router.get('/todos', (req, res) => {
-    console.log(req.get('Authorization'));
     if (req.get('Authorization') === `Bearer ${TOKEN}`) {
-        fs.readFile(DB_FILE, (err, data) => {
-            if (err) console.log(err.message);
-            if (data) console.log(JSON.parse(data));
-            res.status(200).json({
-                todos: data,
-                message: 'Success'
+        if (fs.existsSync(DB_FILE)) {
+            fs.readFile(DB_FILE, (err, data) => {
+                res.status(200).json({
+                    todos: JSON.parse(data).todos,
+                    message: 'Success'
+                });
+            })
+        } else {
+            fs.writeFile(DB_FILE, INIT_DB, (err) => {
+                res.status(200).json({
+                    todos: [],
+                    message: 'Success'
+                });
             });
-        })
+        }
     } else {
         res.status(401).json({
             message: 'You are not authorized to view this content' 
