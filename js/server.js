@@ -13,8 +13,8 @@ const PROFILE = {
 };
 const DB_FILE = 'db.json';
 
-router.post('/login', (req, res) => {
-    if (req.params.email === EMAIL && req.params.pass === PASSWORD) {
+router.get('/login', (req, res) => {
+    if (req.query.email === EMAIL && req.query.password === PASSWORD) {
         res.status(200).json({
             profile: PROFILE,
             token: TOKEN,

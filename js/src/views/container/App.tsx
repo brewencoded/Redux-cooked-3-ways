@@ -6,7 +6,8 @@ import TodoList from '../presentation/TodoList';
 import {
     AddTodo,
     CompleteTodo,
-    RemoveTodo
+    RemoveTodo,
+    LoginAction
 } from '../../actions';
 
 import {
@@ -35,14 +36,21 @@ const mapDispatchToTodos = (dispatch) => ({
     completeTodo: (id) => dispatch(CompleteTodo(id)),
     removeTodo: (id) => dispatch(RemoveTodo(id))
 });
+const mapDispatchToLogin = (dispatch) => {
+    const loginThunk = LoginAction(dispatch);
+    return {
+        login: (email, password) => loginThunk(email, password)
+    };
+};
 
 // This is our provider: binds to the store and feeds the dumb views
 const App: React.SFC<IAppProps> = ({ store }) => {
     const FormWithDispatch = connect(mapDispatchToForm, store.dispatch)(Form);
     const TodoListWithDispatch = connect(mapDispatchToTodos, store.dispatch)(TodoList);
+    const LoginFormWithDispatch = connect(mapDispatchToLogin, store.dispatch)(LoginForm);
     return (
         <div style={appStyles}>
-            <LoginForm login={(email, password) => console.log(email, password)}/>
+            <LoginFormWithDispatch />
             <h1 style={{ textAlign: 'center' }}>Todo</h1>
             <div style={{ padding: '0 10px 0 10px' }}>
                 <FormWithDispatch />
