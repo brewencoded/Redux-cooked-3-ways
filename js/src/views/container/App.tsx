@@ -15,6 +15,7 @@ import {
 } from '../../store/createStore';
 
 import connect from '../../helpers/connect';
+import LoginForm from './LoginForm';
 
 export interface IAppProps {
     store: IStore;
@@ -41,11 +42,14 @@ const App: React.SFC<IAppProps> = ({ store }) => {
     const TodoListWithDispatch = connect(mapDispatchToTodos, store.dispatch)(TodoList);
     return (
         <div style={appStyles}>
-            <h1>Todo</h1>
-            <FormWithDispatch />
-            <TodoListWithDispatch
-                todos={store.getState().todo}
-            />
+            <LoginForm login={(email, password) => console.log(email, password)}/>
+            <h1 style={{ textAlign: 'center' }}>Todo</h1>
+            <div style={{ padding: '0 10px 0 10px' }}>
+                <FormWithDispatch />
+                <TodoListWithDispatch
+                    todos={store.getState().todo}
+                />
+            </div>
         </div>
     );
 };
