@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Todo from '../../models/TodoModel';
 
-const formStyle = {
+const formStyle: React.CSSProperties = {
     marginBottom: 10
 };
 
@@ -27,9 +27,13 @@ import {
     AddTodo
 } from '../../actions';
 
-const TodoForm = ({ submit }) => {
+export interface ITodoFormProps {
+    submit: (text: string) => Promise<any>
+}
+
+const TodoForm: React.SFC<ITodoFormProps> = ({ submit }) => {
     // Input tracker
-    let input;
+    let input: HTMLInputElement;
 
     return (
         <div style={formStyle}>

@@ -6,7 +6,7 @@ const liStyle: React.CSSProperties = {
     padding: '4px',
 };
 
-const pStyle = {
+const pStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     margin: 0,
     float: 'left',
@@ -33,7 +33,15 @@ const doneStyle: React.CSSProperties = {
     backgroundColor: '#ff3860',
 };
 
-const Todo = ({ text, id, done, completeTodo, removeTodo }) => (
+export interface ITodoProps {
+    text: string;
+    id: string;
+    done: boolean;
+    completeTodo: (id: string) => void;
+    removeTodo: (id: string) => void; 
+}
+
+const Todo: React.SFC<ITodoProps> = ({ text, id, done, completeTodo, removeTodo }) => (
     <li key={id} style={liStyle}>
         <p style={pStyle}>{text}</p>
         {

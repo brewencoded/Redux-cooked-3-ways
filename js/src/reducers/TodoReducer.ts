@@ -3,10 +3,12 @@ import {
     COMPLETE_TODO,
     REMOVE_TODO
 } from '../constants';
+import ITodoModel from '../models/ITodoModel';
+import { IAction } from '../actions/IAction';
 
-const InitialState = [];
+const InitialState: ITodoModel[] = [];
 
-const TodoReducer = (state = InitialState, action) => {
+const TodoReducer = (state = InitialState, action: IAction): ITodoModel[] => {
     if (!action) {
         return state;
     }

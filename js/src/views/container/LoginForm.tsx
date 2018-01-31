@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Todo from '../../models/TodoModel';
 
-const headerStyle = {
+const headerStyle: React.CSSProperties = {
     backgroundColor: '#444',
     padding: 10,
 };
@@ -28,10 +28,14 @@ import {
     AddTodo
 } from '../../actions';
 
-const TodoForm = ({ login }) => {
+export interface ILoginFormProps {
+    login: (email: string, password: string) => void;
+}
+
+const LoginForm: React.SFC<ILoginFormProps> = ({ login }) => {
     // Input tracker
-    let email;
-    let password;
+    let email: HTMLInputElement;
+    let password: HTMLInputElement;
 
     return (
         <div style={headerStyle}>
@@ -57,4 +61,4 @@ const TodoForm = ({ login }) => {
     );
 };
 
-export default TodoForm;
+export default LoginForm;
