@@ -2,28 +2,28 @@ import * as React from 'react';
 import Todo from '../../models/TodoModel';
 
 const buttonStyle: React.CSSProperties = {
-    color: 'white',
     backgroundColor: '#4caf50',
-    borderRadius: 4,
     borderColor: 'transparent',
-    padding: '10px',
-    outline: 0,
+    borderRadius: 4,
+    color: 'white',
     cursor: 'pointer',
+    outline: 0,
+    padding: '10px',
 };
 
-import  {
+import {
     AddTodo
 } from '../../actions';
 
 const TodoForm = ({ submit }) => {
     // Input tracker
     let input;
-  
+
     return (
         <div>
             <input
                 placeholder="Add a todo"
-                ref={node => { input = node; }}
+                ref={(node) => { input = node; }}
             />
             <button
                 style={buttonStyle}

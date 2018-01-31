@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const WebpackDevServer = require('webpack-dev-server');
 const PORT = 8080;
+const mockApi = require('./server');
 
 gulp.task('clean', () => gulp
     .src('./dist/*', {read: false})
@@ -42,6 +43,8 @@ gulp.task('webpack-dev-server', (cb) => {
     WebpackDevServer.addDevServerEntrypoints(webpackConfig, options);
     const compiler = webpack(webpackConfig);
     const server = new WebpackDevServer(compiler, options);
+
+    server.use('/api', mockApi);
     
     server.listen(PORT, 'localhost', (err) => {
         if (err) throw new Error('webpack', err);

@@ -5,3 +5,4 @@ dist
 ._.DS_Store
 **/.DS_Store
 npm-debug.log
+db.json

@@ -17,7 +17,7 @@ import {
 import connect from '../../helpers/connect';
 
 export interface IAppProps {
-    store: IStore
+    store: IStore;
 }
 
 // get a reference to dispatch and attach it to the components

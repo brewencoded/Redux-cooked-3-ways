@@ -8,8 +8,8 @@ module.exports = {
     },
     output: {
         path: __dirname + '/dist',
-        filename: 'bundle.js',
-        sourceMapFilename: 'bundle.map.js'
+        filename: '[name].bundle.js',
+        sourceMapFilename: '[name].bundle.map.js'
     },
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.

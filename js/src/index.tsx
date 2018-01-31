@@ -13,7 +13,7 @@ import {
 const reducers = combineReducers({
     todo: TodoReducer
 });
-const store = createStore(reducers); 
+const store = createStore(reducers);
 
 const render = (): void => {
     ReactDOM.render(
