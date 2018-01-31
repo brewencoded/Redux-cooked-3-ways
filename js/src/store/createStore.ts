@@ -1,19 +1,7 @@
-import {
-    INCREMENT
-} from '../constants';
-import {
-    IConcatState
-} from '../reducers/ConcatReducer';
-import {
-    IAction
-} from '../actions/IAction';
-import {
-    ICountState
-} from '../reducers/CountReducer';
+import { IAction } from '../actions/IAction';
 
 export interface IStoreState {
-    counter: ICountState,
-    concat: IConcatState
+    todo
 }
 
 export type Subscriber = (fn: Function) => void;
@@ -28,12 +16,7 @@ export interface IStore {
   
 const createStore = (reducer): IStore => {
     let onChange;
-    let state: IStoreState = reducer({}, {
-        type: INCREMENT,
-        payload: {
-            amount: 0
-        }
-    });
+    let state: IStoreState = reducer();
     return {
         getState: () => state,
         subscribe: (fn: Function) => onChange = fn,

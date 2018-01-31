@@ -1,19 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import App from './App';
+import App from './views/container/App';
 
 import createStore from './store/createStore';
 import combineReducers from './helpers/combineReducers';
 
 import {
-    CountReducer,
-    ConcatReducer
+    TodoReducer
 } from './reducers';
 
 const reducers = combineReducers({
-    counter: CountReducer,
-    concat: ConcatReducer
+    todo: TodoReducer
 });
 const store = createStore(reducers); 
 
