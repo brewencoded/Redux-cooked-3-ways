@@ -15,9 +15,9 @@ export interface IStore {
     dispatch: Dispatcher;
 }
   
-const createStore = (reducer): IStore => {
+const createStore = (initialState, reducer): IStore => {
     let onChange;
-    let state: IStoreState = reducer();
+    let state: IStoreState = initialState || reducer();
     return {
         getState: () => state,
         subscribe: (fn: Function) => onChange = fn,

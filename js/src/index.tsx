@@ -15,9 +15,12 @@ const reducers = combineReducers({
     todo: TodoReducer,
     user: UserReducer
 });
-const store = createStore(reducers);
+
+const initialState = localStorage.getItem('appStore') ? JSON.parse(localStorage.getItem('appStore')) : null; 
+const store = createStore(initialState, reducers);
 
 const render = (): void => {
+    localStorage.setItem('appStore', JSON.stringify(store.getState()));
     ReactDOM.render(
         <App store={store} />,
         document.getElementById('app')
