@@ -50,7 +50,9 @@ const App: React.SFC<IAppProps> = ({ store }) => {
     const LoginFormWithDispatch = connect(mapDispatchToLogin, store.dispatch)(LoginForm);
     return (
         <div style={appStyles}>
-            <LoginFormWithDispatch />
+            <LoginFormWithDispatch
+                 user={store.getState().user}
+            />
             <h1 style={{ textAlign: 'center' }}>Todo</h1>
             <div style={{ padding: '0 10px 0 10px' }}>
                 <FormWithDispatch />

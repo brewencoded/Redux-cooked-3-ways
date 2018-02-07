@@ -7,11 +7,13 @@ import createStore from './store/createStore';
 import combineReducers from './helpers/combineReducers';
 
 import {
-    TodoReducer
+    TodoReducer,
+    UserReducer
 } from './reducers';
 
 const reducers = combineReducers({
-    todo: TodoReducer
+    todo: TodoReducer,
+    user: UserReducer
 });
 const store = createStore(reducers);
 

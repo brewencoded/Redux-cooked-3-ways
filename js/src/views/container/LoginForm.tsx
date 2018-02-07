@@ -2,6 +2,7 @@ import * as React from 'react';
 import Todo from '../../models/TodoModel';
 
 const headerStyle: React.CSSProperties = {
+    overflow: 'hidden',
     backgroundColor: '#444',
     padding: 10,
 };
@@ -24,41 +25,65 @@ const inputStyle: React.CSSProperties  = {
     marginRight: 10,
 };
 
+const welcomeStyle: React.CSSProperties = {
+    margin: 0,
+    color: 'white',
+    float: 'left'
+};
+
+const logoutButtonStyle = {
+    ...buttonStyle,
+    float: 'right'
+}
+
 import {
     AddTodo
 } from '../../actions';
+import { LOGIN_SUCCESS } from '../../constants/index';
+import IUserModel from '../../models/IUserModel';
 
 export interface ILoginFormProps {
+    user: IUserModel,
     login: (email: string, password: string) => void;
 }
 
-const LoginForm: React.SFC<ILoginFormProps> = ({ login }) => {
+const LoginForm: React.SFC<ILoginFormProps> = ({ login, user }) => {
+    console.dir(user);
     // Input tracker
     let email: HTMLInputElement;
     let password: HTMLInputElement;
 
-    return (
-        <div style={headerStyle}>
-            <input
-                style={inputStyle}
-                placeholder="Email"
-                ref={(node) => { email = node; }}
-            />
-            <input
-                style={inputStyle}
-                placeholder="Password"
-                ref={(node) => { password = node; }}
-            />
-            <button
-                style={buttonStyle}
-                onClick={() => {
-                    login(email.value, password.value);
-                }}
-            >
-                Submit
-            </button>
-        </div>
-    );
+    if (user.loginStatus === LOGIN_SUCCESS) {
+        return (
+            <div style={headerStyle}>
+                <h3 style={welcomeStyle}>Welcome {user.name}!</h3>
+                <a style={logoutButtonStyle}>Logout</a>
+            </div>
+        );
+    } else {
+        return (
+            <div style={headerStyle}>
+                <input
+                    style={inputStyle}
+                    placeholder="Email"
+                    ref={(node) => { email = node; }}
+                />
+                <input
+                    style={inputStyle}
+                    placeholder="Password"
+                    ref={(node) => { password = node; }}
+                />
+                <button
+                    style={buttonStyle}
+                    onClick={() => {
+                        login(email.value, password.value);
+                    }}
+                >
+                    Submit
+                </button>
+            </div>
+        );
+    }
 };
 
 export default LoginForm;

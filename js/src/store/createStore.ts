@@ -1,7 +1,8 @@
 import { IAction } from '../actions/IAction';
 
 export interface IStoreState {
-    todo
+    todo,
+    user
 }
 
 export type Subscriber = (fn: Function) => void;

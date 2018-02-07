@@ -1,7 +1,7 @@
 import { v1 } from 'uuid';
 import ITodoModel from './ITodoModel';
 
-export type TodoConstructor = () => ITodoModel;
+export type TodoConstructor = (options?) => ITodoModel;
 
 export interface TodoProps {
     text: string;
@@ -15,7 +15,7 @@ export interface Todo {
     proto: {}
 }
 
-const Todo = {
+const Todo: Todo = {
     construct(options): ITodoModel {
         const instance:ITodoModel = Object.create(this.proto);
         const props: TodoProps = Object.assign({}, this.props, options);

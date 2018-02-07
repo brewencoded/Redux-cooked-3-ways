@@ -4,3 +4,5 @@ export const REMOVE_TODO: string = 'REMOVE_TODO';
 export const LOGIN_PENDING = 'LOGIN_PENDING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT_PENDING: string = 'LOGOUT_PENDING';
+export const LOGOUT_SUCCESS: string = 'LOGOUT_SUCCESS';
