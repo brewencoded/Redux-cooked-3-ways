@@ -48,7 +48,6 @@ export interface ILoginFormProps {
 }
 
 const LoginForm: React.SFC<ILoginFormProps> = ({ login, user }) => {
-    console.dir(user);
     // Input tracker
     let email: HTMLInputElement;
     let password: HTMLInputElement;

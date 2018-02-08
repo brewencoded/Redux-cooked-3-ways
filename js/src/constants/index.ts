@@ -6,3 +6,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT_PENDING: string = 'LOGOUT_PENDING';
 export const LOGOUT_SUCCESS: string = 'LOGOUT_SUCCESS';
+export const PROFILE_PENDING: string = 'PROFILE_PENDING';
+export const PROFILE_SUCCESS: string = 'PROFILE_SUCCESS';
+export const PROFILE_FAIL: string = 'PROFILE_FAIL';

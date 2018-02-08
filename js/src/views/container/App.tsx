@@ -7,7 +7,8 @@ import {
     AddTodo,
     CompleteTodo,
     RemoveTodo,
-    LoginAction
+    LoginAction,
+    ProfileAction
 } from '../../actions';
 
 import {
@@ -17,6 +18,7 @@ import {
 
 import connect from '../../helpers/connect';
 import LoginForm from './LoginForm';
+import { LOGIN_SUCCESS, LOGIN_PENDING } from '../../constants/index';
 
 export interface IAppProps {
     store: IStore;
@@ -48,6 +50,7 @@ const App: React.SFC<IAppProps> = ({ store }) => {
     const FormWithDispatch = connect(mapDispatchToForm, store.dispatch)(Form);
     const TodoListWithDispatch = connect(mapDispatchToTodos, store.dispatch)(TodoList);
     const LoginFormWithDispatch = connect(mapDispatchToLogin, store.dispatch)(LoginForm);
+
     return (
         <div style={appStyles}>
             <LoginFormWithDispatch

@@ -1,8 +1,4 @@
-import {
-    LOGIN_PENDING,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL
-} from '../constants';
+import { PROFILE_PENDING, PROFILE_SUCCESS, PROFILE_FAIL } from '../constants';
 import { IAction } from './IAction';
 import axios from 'axios';
 
@@ -10,25 +6,30 @@ const setToken = (token) => {
     localStorage.setItem('todoAppToken', token);
 };
 
-const Login = (dispatch) => async (email: string, password: string) => {
+const ProfileAction = (dispatch) => async (token) => {
     dispatch({
-        type: LOGIN_PENDING
+        type: PROFILE_PENDING
     });
     try {
-        const loginResponse = await axios.get(`/api/login?email=${email}&password=${password}`, {});
+        const loginResponse = await axios.get('/api/profile', {
+            headers: {
+                Authentication: `Bearer ${token}`
+            }
+        });
+        console.dir(loginResponse);
         if (loginResponse.status === 200) {
-            setToken(loginResponse.data.token);
             dispatch({
-                type: LOGIN_SUCCESS,
+                type: PROFILE_SUCCESS,
                 payload: {
                     status: loginResponse.status,
-                    data: loginResponse.data.profile,
-                    token: loginResponse.data.token
+                    data: loginResponse.data.profile
                 }
             });
         } else {
+            // What we could do here instead is dispatch different types depending on what kind
+            // of error message we recieved
             dispatch({
-                type: LOGIN_FAIL,
+                type: PROFILE_FAIL,
                 payload: {
                     status: loginResponse.status,
                     message: loginResponse.data.message
@@ -36,8 +37,9 @@ const Login = (dispatch) => async (email: string, password: string) => {
             })
         }
     } catch (e) {
+        console.dir(e);
         dispatch({
-            type: LOGIN_FAIL,
+            type: PROFILE_FAIL,
             payload: {
                 status: e.response.status,
                 message: e.response.data.message
@@ -46,4 +48,4 @@ const Login = (dispatch) => async (email: string, password: string) => {
     }
 };
 
-export default Login;
+export default ProfileAction;
