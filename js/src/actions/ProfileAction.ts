@@ -2,10 +2,6 @@ import { PROFILE_PENDING, PROFILE_SUCCESS, PROFILE_FAIL } from '../constants';
 import { IAction } from './IAction';
 import axios from 'axios';
 
-const setToken = (token) => {
-    localStorage.setItem('todoAppToken', token);
-};
-
 const ProfileAction = (dispatch) => async (token) => {
     dispatch({
         type: PROFILE_PENDING
@@ -13,10 +9,9 @@ const ProfileAction = (dispatch) => async (token) => {
     try {
         const loginResponse = await axios.get('/api/profile', {
             headers: {
-                Authentication: `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             }
         });
-        console.dir(loginResponse);
         if (loginResponse.status === 200) {
             dispatch({
                 type: PROFILE_SUCCESS,
@@ -34,7 +29,7 @@ const ProfileAction = (dispatch) => async (token) => {
                     status: loginResponse.status,
                     message: loginResponse.data.message
                 }
-            })
+            });
         }
     } catch (e) {
         console.dir(e);

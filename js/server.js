@@ -35,7 +35,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-    if (req.get('Authentication') === `Bearer ${TOKEN}`) {
+    if (req.get('Authorization') === `Bearer ${TOKEN}`) {
         res.status(200).json({
             profile: PROFILE,
             message: 'Success'

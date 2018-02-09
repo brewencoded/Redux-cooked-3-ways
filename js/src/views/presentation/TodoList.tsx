@@ -15,14 +15,14 @@ const ulStyles: React.CSSProperties = {
 };
 
 export interface ITodoListProps {
-    todos: ITodoModel[];
+    todoStore;
     completeTodo: (id: string) => void;
     removeTodo: (id: string) => void;
 }
 
-const TodoList: React.SFC<ITodoListProps> = ({ todos, completeTodo, removeTodo }) => {
+const TodoList: React.SFC<ITodoListProps> = ({ todoStore, completeTodo, removeTodo }) => {
     // Input tracker
-    const list: JSX.Element[] = todos.map((todo) => (
+    const list: JSX.Element[] = todoStore.todos.map((todo) => (
         <Todo key={todo.id} {...todo} completeTodo={completeTodo} removeTodo={removeTodo} />
     ));
 

@@ -60,7 +60,7 @@ const App: React.SFC<IAppProps> = ({ store }) => {
             <div style={{ padding: '0 10px 0 10px' }}>
                 <FormWithDispatch />
                 <TodoListWithDispatch
-                    todos={store.getState().todo}
+                    todoStore={store.getState().todo}
                 />
             </div>
         </div>

@@ -10,7 +10,10 @@ import {
     TodoReducer,
     UserReducer
 } from './reducers';
-import ProfileAction from './actions/ProfileAction';
+import {
+    ProfileAction,
+    TodosAction
+ } from './actions';
 
 const reducers = combineReducers({
     todo: TodoReducer,
@@ -22,8 +25,10 @@ const store = createStore(null, reducers);
 const checkForCredentials = (dispatch) => {
     const token = localStorage.getItem('todoAppToken');
     const profileThunk = ProfileAction(dispatch);
+    const todosThunk = TodosAction(dispatch);
     if (token) {
         profileThunk(token);
+        todosThunk(token);
     }
 };
 
@@ -37,9 +42,9 @@ const render = (): void => {
 
 store.subscribe(render);
 
-checkForCredentials(store.dispatch);
-
 render();
+
+checkForCredentials(store.dispatch);
 
 if (module.hot) {
     module.hot.accept();
