@@ -28,10 +28,11 @@ import {
 } from '../../actions';
 
 export interface ITodoFormProps {
-    submit: (text: string) => Promise<any>
+    submit: (text: string) => Promise<any>,
+    save: () => void
 }
 
-const TodoForm: React.SFC<ITodoFormProps> = ({ submit }) => {
+const TodoForm: React.SFC<ITodoFormProps> = ({ submit, save }) => {
     // Input tracker
     let input: HTMLInputElement;
 
@@ -46,6 +47,7 @@ const TodoForm: React.SFC<ITodoFormProps> = ({ submit }) => {
                 style={buttonStyle}
                 onClick={() => {
                     submit(input.value);
+                    save();
                     input.value = '';
                 }}
             >

@@ -8,7 +8,8 @@ import {
     CompleteTodo,
     RemoveTodo,
     LoginAction,
-    ProfileAction
+    ProfileAction,
+    SaveAction
 } from '../../actions';
 
 import {
@@ -45,11 +46,17 @@ const mapDispatchToLogin = (dispatch) => {
     };
 };
 
+const saveTodos = (dispatch) => (todos, token) => SaveAction(dispatch)(todos, token);
+
 // This is our provider: binds to the store and feeds the dumb views
 const App: React.SFC<IAppProps> = ({ store }) => {
     const FormWithDispatch = connect(mapDispatchToForm, store.dispatch)(Form);
     const TodoListWithDispatch = connect(mapDispatchToTodos, store.dispatch)(TodoList);
     const LoginFormWithDispatch = connect(mapDispatchToLogin, store.dispatch)(LoginForm);
+    
+    const save = () => {
+        saveTodos(store.dispatch)(store.getState().todo.todos, localStorage.getItem('todoAppToken'));
+    }
 
     return (
         <div style={appStyles}>
@@ -58,9 +65,12 @@ const App: React.SFC<IAppProps> = ({ store }) => {
             />
             <h1 style={{ textAlign: 'center' }}>Todo</h1>
             <div style={{ padding: '0 10px 0 10px' }}>
-                <FormWithDispatch />
+                <FormWithDispatch
+                    save={save}
+                />
                 <TodoListWithDispatch
                     todoStore={store.getState().todo}
+                    save={save}
                 />
             </div>
         </div>

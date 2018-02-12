@@ -1,5 +1,6 @@
 const fs = require('fs');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const router = express.Router();
 const PORT = 3001;
@@ -15,6 +16,7 @@ const DB_FILE = 'db.json';
 const INIT_DB = {
     todos: []
 };
+const jsonParser = bodyParser.json();
 
 if (!fs.existsSync(DB_FILE)) {
     fs.writeFileSync(DB_FILE, JSON.stringify(INIT_DB, null, 4));
@@ -47,12 +49,12 @@ router.get('/profile', (req, res) => {
     }
 });
 
-router.post('/todos', (req, res) => {
+router.post('/todos', jsonParser, (req, res) => {
     if (req.get('Authorization') === `Bearer ${TOKEN}`) {
         fs.readFile(DB_FILE, (err, data) => {
             const contents = JSON.parse(data);
-            contents.todos = req.body.data.todos;
-            fs.writeFile(DB_FILE, contents, (err) => {
+            contents.todos = req.body.todos;
+            fs.writeFile(DB_FILE, JSON.stringify(contents, null, 4), (err) => {
                 res.status(200).json({
                     message: 'Success'
                 });

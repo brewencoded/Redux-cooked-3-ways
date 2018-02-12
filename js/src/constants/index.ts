@@ -15,3 +15,7 @@ export const LOGOUT_SUCCESS: string = 'LOGOUT_SUCCESS';
 export const PROFILE_PENDING: string = 'PROFILE_PENDING';
 export const PROFILE_SUCCESS: string = 'PROFILE_SUCCESS';
 export const PROFILE_FAIL: string = 'PROFILE_FAIL';
+
+export const SAVE_PENDING = 'SAVE_PENDING';
+export const SAVE_SUCCESS = 'SAVE_SUCCESS';
+export const SAVE_FAIL = 'SAVE_FAIL';

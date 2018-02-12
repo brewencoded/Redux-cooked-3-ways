@@ -44,11 +44,19 @@ export interface ITodoProps {
 const Todo: React.SFC<ITodoProps> = ({ text, id, done, completeTodo, removeTodo }) => (
     <li key={id} style={liStyle}>
         <p style={pStyle}>{text}</p>
-        {
-            done ?
-            <button style={doneStyle} onClick={() => removeTodo(id)}>Remove</button>
-            :
-            <button style={todoStyle} onClick={() => completeTodo(id)}>Complete</button>
+        {done
+        ?
+            <button
+                style={doneStyle}
+                onClick={() => removeTodo(id)}>
+                    Remove
+            </button>
+        :
+            <button
+                style={todoStyle}
+                onClick={() => completeTodo(id)}>
+                    Complete
+            </button>
         }
     </li>
 );

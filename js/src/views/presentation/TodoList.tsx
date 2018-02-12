@@ -18,12 +18,26 @@ export interface ITodoListProps {
     todoStore;
     completeTodo: (id: string) => void;
     removeTodo: (id: string) => void;
+    save: () => void;
 }
 
-const TodoList: React.SFC<ITodoListProps> = ({ todoStore, completeTodo, removeTodo }) => {
+const TodoList: React.SFC<ITodoListProps> = ({ todoStore, completeTodo, removeTodo, save }) => {
+    const completeAndSave = (id) => {
+        completeTodo(id);
+        save();
+    };
+    const removeAndSave = (id) => {
+        removeTodo(id);
+        save();
+    }
     // Input tracker
     const list: JSX.Element[] = todoStore.todos.map((todo) => (
-        <Todo key={todo.id} {...todo} completeTodo={completeTodo} removeTodo={removeTodo} />
+        <Todo
+            key={todo.id}
+            {...todo}
+            completeTodo={completeAndSave}
+            removeTodo={removeAndSave}
+        />
     ));
 
     return (

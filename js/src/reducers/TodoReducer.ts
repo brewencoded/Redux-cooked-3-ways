@@ -4,14 +4,18 @@ import {
     REMOVE_TODO,
     FETCH_PENDING,
     FETCH_FAIL,
-    FETCH_SUCCESS
+    FETCH_SUCCESS,
+    SAVE_PENDING,
+    SAVE_FAIL,
+    SAVE_SUCCESS
 } from '../constants';
 import ITodoModel from '../models/ITodoModel';
 import { IAction } from '../actions/IAction';
 
 const InitialState = {
     todos: [],
-    fetchStatus: null
+    fetchStatus: null,
+    persistStatus: null
 };
 
 const TodoReducer = (state = InitialState, action: IAction) => {
@@ -56,6 +60,21 @@ const TodoReducer = (state = InitialState, action: IAction) => {
                 fetchStatus: FETCH_SUCCESS,
                 todos: action.payload.data
             }
+        case SAVE_PENDING:
+            return {
+                ...state,
+                persistStatus: SAVE_PENDING
+            };
+        case SAVE_FAIL:
+            return {
+                ...state,
+                persistStatus: SAVE_FAIL
+            };
+        case SAVE_SUCCESS:
+            return {
+                ...state,
+                persistStatus: SAVE_SUCCESS
+            };
         default:
             return state;
     }
