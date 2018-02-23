@@ -59,6 +59,9 @@ const App: React.SFC<IAppProps> = ({ store }) => {
         saveTodos(store.dispatch)(store.getState().todo.present.todos, localStorage.getItem('todoAppToken'));
     };
 
+    const undo = () => store.dispatch({ type: 'UNDO' });
+    const redo = () => store.dispatch({ type: 'REDO' });
+
     return (
         <div style={appStyles}>
             <LoginFormWithDispatch
@@ -68,6 +71,8 @@ const App: React.SFC<IAppProps> = ({ store }) => {
             <div style={{ padding: '0 10px 0 10px' }}>
                 <FormWithDispatch
                     save={save}
+                    undo={undo}
+                    redo={redo}
                 />
                 <TodoListWithDispatch
                     todoStore={store.getState().todo.present}

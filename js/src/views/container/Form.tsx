@@ -2,7 +2,8 @@ import * as React from 'react';
 import Todo from '../../models/TodoModel';
 
 const formStyle: React.CSSProperties = {
-    marginBottom: 10
+    marginBottom: 10,
+    textAlign: 'center',
 };
 
 const buttonStyle: React.CSSProperties = {
@@ -11,6 +12,7 @@ const buttonStyle: React.CSSProperties = {
     borderRadius: 4,
     color: 'white',
     cursor: 'pointer',
+    margin: '0 5px 0 5px',
     outline: 0,
     padding: '10px',
 };
@@ -18,7 +20,6 @@ const buttonStyle: React.CSSProperties = {
 const inputStyle: React.CSSProperties  = {
     border: '2px solid #888',
     borderRadius: 4,
-    marginRight: 10,
     outline: 0,
     padding: '10px',
 };
@@ -30,9 +31,11 @@ import {
 export interface ITodoFormProps {
     submit: (text: string) => Promise<any>;
     save: () => void;
+    undo: () => void;
+    redo: () => void;
 }
 
-const TodoForm: React.SFC<ITodoFormProps> = ({ submit, save }) => {
+const TodoForm: React.SFC<ITodoFormProps> = ({ submit, save, undo, redo }) => {
     // Input tracker
     let input: HTMLInputElement;
 
@@ -52,6 +55,18 @@ const TodoForm: React.SFC<ITodoFormProps> = ({ submit, save }) => {
                 }}
             >
                 Add
+            </button>
+            <button
+                style={buttonStyle}
+                onClick={undo}
+            >
+                Undo
+            </button>
+            <button
+                style={buttonStyle}
+                onClick={redo}
+            >
+                Redo
             </button>
         </div>
     );
