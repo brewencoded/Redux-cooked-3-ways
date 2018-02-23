@@ -31,7 +31,7 @@ const welcomeStyle: React.CSSProperties = {
     float: 'left'
 };
 
-const logoutButtonStyle = {
+const logoutButtonStyle: React.CSSProperties = {
     ...buttonStyle,
     float: 'right'
 }

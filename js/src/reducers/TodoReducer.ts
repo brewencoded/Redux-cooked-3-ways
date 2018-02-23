@@ -12,13 +12,19 @@ import {
 import ITodoModel from '../models/ITodoModel';
 import { IAction } from '../actions/IAction';
 
-const InitialState = {
+export interface ITodoState {
+    todos: ITodoModel[];
+    fetchStatus: string | null;
+    persistStatus: string | null;
+}
+
+const InitialState: ITodoState = {
     todos: [],
     fetchStatus: null,
     persistStatus: null
 };
 
-const TodoReducer = (state = InitialState, action: IAction) => {
+const TodoReducer = (state: ITodoState = InitialState, action: IAction): ITodoState => {
     if (!action) {
         return state;
     }

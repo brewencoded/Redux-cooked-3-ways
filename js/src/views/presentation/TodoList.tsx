@@ -2,6 +2,7 @@ import * as React from 'react';
 import Todo from './Todo';
 import connect from '../../helpers/connect';
 import ITodoModel from '../../models/ITodoModel';
+import { ITodoState } from '../../reducers/TodoReducer';
 
 import {
     AddTodo
@@ -15,18 +16,18 @@ const ulStyles: React.CSSProperties = {
 };
 
 export interface ITodoListProps {
-    todoStore;
+    todoStore: ITodoState;
     completeTodo: (id: string) => void;
     removeTodo: (id: string) => void;
     save: () => void;
 }
 
 const TodoList: React.SFC<ITodoListProps> = ({ todoStore, completeTodo, removeTodo, save }) => {
-    const completeAndSave = (id) => {
+    const completeAndSave = (id: string) => {
         completeTodo(id);
         save();
     };
-    const removeAndSave = (id) => {
+    const removeAndSave = (id: string) => {
         removeTodo(id);
         save();
     }

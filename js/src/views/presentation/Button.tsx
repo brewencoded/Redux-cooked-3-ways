@@ -18,7 +18,7 @@ export interface IButtonProps {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button: React.SFC<IButtonProps> = (props) => {
+const Button: React.SFC<IButtonProps> = (props: IButtonProps) => {
     return (
         <button
             style={todoStyle}

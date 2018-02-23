@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import App from './views/container/App';
-import createStore from './store/createStore';
+import createStore, { Dispatcher } from './store/createStore';
 import combineReducers from './helpers/combineReducers';
 
 import {
@@ -22,8 +22,8 @@ const reducers = combineReducers({
 
 const store = createStore(null, reducers);
 
-const checkForCredentials = (dispatch) => {
-    const token = localStorage.getItem('todoAppToken');
+const checkForCredentials = (dispatch: Dispatcher) => {
+    const token: string = localStorage.getItem('todoAppToken');
     const profileThunk = ProfileAction(dispatch);
     const todosThunk = TodosAction(dispatch);
     if (token) {

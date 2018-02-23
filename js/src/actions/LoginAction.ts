@@ -5,12 +5,13 @@ import {
 } from '../constants';
 import { IAction } from './IAction';
 import axios from 'axios';
+import { Dispatcher } from '../store/createStore';
 
-const setToken = (token) => {
+const setToken = (token: string) => {
     localStorage.setItem('todoAppToken', token);
 };
 
-const Login = (dispatch) => async (email: string, password: string) => {
+const Login = (dispatch: Dispatcher) => async (email: string, password: string) => {
     dispatch({
         type: LOGIN_PENDING
     });

@@ -1,8 +1,9 @@
 import { PROFILE_PENDING, PROFILE_SUCCESS, PROFILE_FAIL } from '../constants';
 import { IAction } from './IAction';
 import axios from 'axios';
+import { Dispatcher } from '../store/createStore';
 
-const ProfileAction = (dispatch) => async (token) => {
+const ProfileAction = (dispatch: Dispatcher) => async (token: string) => {
     dispatch({
         type: PROFILE_PENDING
     });

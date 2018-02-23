@@ -5,8 +5,9 @@ import {
 } from '../constants';
 import { IAction } from './IAction';
 import axios from 'axios';
+import { Dispatcher } from '../store/createStore';
 
-const TodosAction = (dispatch) => async (token: string) => {
+const TodosAction = (dispatch: Dispatcher) => async (token: string) => {
     dispatch({
         type: FETCH_PENDING
     });

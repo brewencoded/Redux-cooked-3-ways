@@ -8,15 +8,20 @@ import {
 } from '../constants';
 import { IAction } from '../actions/IAction';
 import IUserModel from '../models/IUserModel';
-import { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } from 'constants';
 
-const InitialState: IUserModel = {
+export interface IUserState {
+    name: string;
+    email: string;
+    loginStatus: string;
+}
+
+const InitialState: IUserState = {
     name: '',
     email: '',
     loginStatus: ''
 };
 
-const UserReducer = (state = InitialState, action: IAction): IUserModel => {
+const UserReducer = (state: IUserState = InitialState, action: IAction): IUserState => {
     if (!action) {
         return state;
     }

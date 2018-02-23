@@ -5,8 +5,10 @@ import {
 } from '../constants';
 import { IAction } from './IAction';
 import axios from 'axios';
+import { Dispatcher } from '../store/createStore';
+import ITodoModel from '../models/ITodoModel';
 
-const SaveAction = (dispatch) => async (todos, token) => {
+const SaveAction = (dispatch: Dispatcher) => async (todos: ITodoModel[], token: string) => {
     dispatch({
         type: SAVE_PENDING
     });

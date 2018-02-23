@@ -1,8 +1,10 @@
 import { IAction } from '../actions/IAction';
+import { ITodoState } from '../reducers/TodoReducer';
+import { IUserState } from '../reducers/UserReducer';
 
 export interface IStoreState {
-    todo,
-    user
+    todo: ITodoState,
+    user: IUserState
 }
 
 export type Subscriber = (fn: Function) => void;
@@ -14,7 +16,7 @@ export interface IStore {
     subscribe: Subscriber;
     dispatch: Dispatcher;
 }
-  
+
 const createStore = (initialState, reducer): IStore => {
     let onChange;
     let state: IStoreState = initialState || reducer();
