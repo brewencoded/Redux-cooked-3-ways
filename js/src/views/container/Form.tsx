@@ -16,11 +16,11 @@ const buttonStyle: React.CSSProperties = {
 };
 
 const inputStyle: React.CSSProperties  = {
-    padding: '10px',
-    borderRadius: 4,
     border: '2px solid #888',
-    outline: 0,
+    borderRadius: 4,
     marginRight: 10,
+    outline: 0,
+    padding: '10px',
 };
 
 import {
@@ -28,8 +28,8 @@ import {
 } from '../../actions';
 
 export interface ITodoFormProps {
-    submit: (text: string) => Promise<any>,
-    save: () => void
+    submit: (text: string) => Promise<any>;
+    save: () => void;
 }
 
 const TodoForm: React.SFC<ITodoFormProps> = ({ submit, save }) => {

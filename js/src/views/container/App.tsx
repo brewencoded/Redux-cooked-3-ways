@@ -54,10 +54,10 @@ const App: React.SFC<IAppProps> = ({ store }) => {
     const FormWithDispatch = connect(mapDispatchToForm, store.dispatch)(Form);
     const TodoListWithDispatch = connect(mapDispatchToTodos, store.dispatch)(TodoList);
     const LoginFormWithDispatch = connect(mapDispatchToLogin, store.dispatch)(LoginForm);
-    
+
     const save = () => {
-        saveTodos(store.dispatch)(store.getState().todo.todos, localStorage.getItem('todoAppToken'));
-    }
+        saveTodos(store.dispatch)(store.getState().todo.present.todos, localStorage.getItem('todoAppToken'));
+    };
 
     return (
         <div style={appStyles}>
@@ -70,7 +70,7 @@ const App: React.SFC<IAppProps> = ({ store }) => {
                     save={save}
                 />
                 <TodoListWithDispatch
-                    todoStore={store.getState().todo}
+                    todoStore={store.getState().todo.present}
                     save={save}
                 />
             </div>

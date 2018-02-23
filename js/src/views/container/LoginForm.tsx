@@ -2,8 +2,8 @@ import * as React from 'react';
 import Todo from '../../models/TodoModel';
 
 const headerStyle: React.CSSProperties = {
-    overflow: 'hidden',
     backgroundColor: '#444',
+    overflow: 'hidden',
     padding: 10,
 };
 
@@ -18,23 +18,23 @@ const buttonStyle: React.CSSProperties = {
 };
 
 const inputStyle: React.CSSProperties  = {
-    padding: '4px',
-    borderRadius: 4,
     border: '2px solid #888',
-    outline: 0,
+    borderRadius: 4,
     marginRight: 10,
+    outline: 0,
+    padding: '4px',
 };
 
 const welcomeStyle: React.CSSProperties = {
-    margin: 0,
     color: 'white',
-    float: 'left'
+    float: 'left',
+    margin: 0,
 };
 
 const logoutButtonStyle: React.CSSProperties = {
     ...buttonStyle,
     float: 'right'
-}
+};
 
 import {
     AddTodo
@@ -43,7 +43,7 @@ import { LOGIN_SUCCESS } from '../../constants/index';
 import IUserModel from '../../models/IUserModel';
 
 export interface ILoginFormProps {
-    user: IUserModel,
+    user: IUserModel;
     login: (email: string, password: string) => void;
 }
 

@@ -10,9 +10,9 @@ import {
 import CompleteTodo from '../../actions/CompleteTodo';
 
 const ulStyles: React.CSSProperties = {
+    listStyleType: 'none',
     margin: 0,
     padding: 0,
-    listStyleType: 'none',
 };
 
 export interface ITodoListProps {
@@ -30,7 +30,7 @@ const TodoList: React.SFC<ITodoListProps> = ({ todoStore, completeTodo, removeTo
     const removeAndSave = (id: string) => {
         removeTodo(id);
         save();
-    }
+    };
     // Input tracker
     const list: JSX.Element[] = todoStore.todos.map((todo) => (
         <Todo

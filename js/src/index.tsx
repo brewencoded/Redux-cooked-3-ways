@@ -8,15 +8,18 @@ import combineReducers from './helpers/combineReducers';
 
 import {
     TodoReducer,
-    UserReducer
+    UserReducer,
+    UndoableEnhancer
 } from './reducers';
 import {
     ProfileAction,
     TodosAction
  } from './actions';
 
+const UndoableTodoReducer = UndoableEnhancer(TodoReducer);
+
 const reducers = combineReducers({
-    todo: TodoReducer,
+    todo: UndoableTodoReducer,
     user: UserReducer
 });
 

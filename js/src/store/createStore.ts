@@ -1,9 +1,10 @@
 import { IAction } from '../actions/IAction';
 import { ITodoState } from '../reducers/TodoReducer';
 import { IUserState } from '../reducers/UserReducer';
+import { IUndoableState } from '../reducers/UndoableEnhancer';
 
 export interface IStoreState {
-    todo: ITodoState,
+    todo: IUndoableState<ITodoState>,
     user: IUserState
 }
 
@@ -24,6 +25,7 @@ const createStore = (initialState, reducer): IStore => {
         getState: () => state,
         subscribe: (fn: Function) => onChange = fn,
         dispatch: (action: IAction) => {
+            console.dir(action);
             state = reducer(state, action);
             onChange();
         }

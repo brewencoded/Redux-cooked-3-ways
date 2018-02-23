@@ -1,18 +1,18 @@
 import * as React from 'react';
 
 const liStyle: React.CSSProperties = {
-    overflow: 'hidden',
     borderBottom: '2px solid #999',
+    overflow: 'hidden',
     padding: '4px',
 };
 
 const pStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
-    margin: 0,
     float: 'left',
-    padding: '1px 10px',
     lineHeight: '2em',
+    margin: 0,
     marginRight: 10,
+    padding: '1px 10px',
 };
 
 const baseStyle: React.CSSProperties = {
@@ -20,9 +20,9 @@ const baseStyle: React.CSSProperties = {
     borderRadius: 4,
     color: 'white',
     cursor: 'pointer',
+    float: 'left',
     outline: 0,
     padding: '10px',
-    float: 'left',
 };
 const todoStyle: React.CSSProperties = {
     ...baseStyle,
@@ -38,23 +38,27 @@ export interface ITodoProps {
     id: string;
     done: boolean;
     completeTodo: (id: string) => void;
-    removeTodo: (id: string) => void; 
+    removeTodo: (id: string) => void;
 }
 
 const Todo: React.SFC<ITodoProps> = ({ text, id, done, completeTodo, removeTodo }) => (
     <li key={id} style={liStyle}>
-        <p style={pStyle}>{text}</p>
+        <p style={pStyle}>
+            {text}
+        </p>
         {done
         ?
             <button
                 style={doneStyle}
-                onClick={() => removeTodo(id)}>
+                onClick={() => removeTodo(id)}
+            >
                     Remove
             </button>
         :
             <button
                 style={todoStyle}
-                onClick={() => completeTodo(id)}>
+                onClick={() => completeTodo(id)}
+            >
                     Complete
             </button>
         }
