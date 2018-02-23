@@ -1,8 +1,15 @@
 import {
     REMOVE_TODO
 } from '../constants';
+import { IAction } from './IAction';
 
-const RemoveTodo = (id) => {
+export interface IRemoveTodo extends IAction {
+    payload: {
+        id: string
+    }
+}
+
+const RemoveTodo = (id: string): IRemoveTodo => {
     return {
         type: REMOVE_TODO,
         payload: {

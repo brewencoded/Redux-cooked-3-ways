@@ -1,38 +1,57 @@
 import * as React from 'react';
 import Todo from '../../models/TodoModel';
 
-const buttonStyle: React.CSSProperties = {
-    color: 'white',
-    backgroundColor: '#4caf50',
-    borderRadius: 4,
-    borderColor: 'transparent',
-    padding: '10px',
-    outline: 0,
-    cursor: 'pointer',
+const formStyle: React.CSSProperties = {
+    marginBottom: 10
 };
 
-import  {
+const buttonStyle: React.CSSProperties = {
+    backgroundColor: '#4caf50',
+    borderColor: 'transparent',
+    borderRadius: 4,
+    color: 'white',
+    cursor: 'pointer',
+    outline: 0,
+    padding: '10px',
+};
+
+const inputStyle: React.CSSProperties  = {
+    border: '2px solid #888',
+    borderRadius: 4,
+    marginRight: 10,
+    outline: 0,
+    padding: '10px',
+};
+
+import {
     AddTodo
 } from '../../actions';
 
-const TodoForm = ({ submit }) => {
+export interface ITodoFormProps {
+    submit: (text: string) => Promise<any>;
+    save: () => void;
+}
+
+const TodoForm: React.SFC<ITodoFormProps> = ({ submit, save }) => {
     // Input tracker
-    let input;
-  
+    let input: HTMLInputElement;
+
     return (
-        <div>
+        <div style={formStyle}>
             <input
+                style={inputStyle}
                 placeholder="Add a todo"
-                ref={node => { input = node; }}
+                ref={(node) => { input = node; }}
             />
             <button
                 style={buttonStyle}
                 onClick={() => {
                     submit(input.value);
+                    save();
                     input.value = '';
                 }}
             >
-                +
+                Add
             </button>
         </div>
     );

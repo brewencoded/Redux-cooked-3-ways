@@ -1,8 +1,15 @@
 import {
     COMPLETE_TODO
 } from '../constants';
+import { IAction } from './IAction';
 
-const CompleteTodo = (id) => {
+export interface ICompleteTodoAction extends IAction {
+    payload: {
+        id: string
+    }
+}
+
+const CompleteTodo = (id: string): ICompleteTodoAction => {
     return {
         type: COMPLETE_TODO,
         payload: {

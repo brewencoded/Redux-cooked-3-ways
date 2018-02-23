@@ -1,35 +1,27 @@
 import * as React from 'react';
 
 const baseStyle: React.CSSProperties = {
-    color: 'white',
-    borderRadius: 4,
     borderColor: 'transparent',
-    padding: '10px',
-    outline: 0,
+    borderRadius: 4,
+    color: 'white',
     cursor: 'pointer',
+    outline: 0,
+    padding: '10px',
 };
-const todoStyle: React.CSSProperties = Object.assign({}, baseStyle, {
+const todoStyle: React.CSSProperties = {
+    ...baseStyle,
     backgroundColor: '#4caf50',
-});
-const doneStyle: React.CSSProperties = Object.assign({}, baseStyle, {
-    backgroundColor: '#ff3860',
-});
+};
 
 export interface IButtonProps {
     done: boolean;
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button: React.SFC<IButtonProps> = (props) => {
-    let style;
-    if (props.done) {
-        style = todoStyle;
-    } else {
-        style = doneStyle;
-    }
+const Button: React.SFC<IButtonProps> = (props: IButtonProps) => {
     return (
         <button
-            style={style}
+            style={todoStyle}
             onClick={props.onClick}
         >
             {props.done ? 'Remove' : 'Done'}
