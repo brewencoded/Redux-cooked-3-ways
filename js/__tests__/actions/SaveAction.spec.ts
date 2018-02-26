@@ -2,8 +2,8 @@ import {
     SAVE_PENDING,
     SAVE_SUCCESS,
     SAVE_FAIL
-} from '../src/constants';
-import { SaveAction } from '../src/actions';
+} from '../../src/constants';
+import { SaveAction } from '../../src/actions';
 
 const mockEmail = 'test@test.com';
 const mockPassword = 'test';

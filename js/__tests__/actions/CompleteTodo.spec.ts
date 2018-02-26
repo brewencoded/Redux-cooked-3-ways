@@ -1,11 +1,11 @@
 import {
-    REMOVE_TODO
-} from '../src/constants';
-import { RemoveTodo } from '../src/actions';
+    COMPLETE_TODO
+} from '../../src/constants';
+import { CompleteTodo } from '../../src/actions';
 
-const mockId = 'Test';
+const mockId = 'testId';
 const mockTodoAction = {
-    type: REMOVE_TODO,
+    type: COMPLETE_TODO,
     payload: {
         id: mockId
     }
@@ -13,7 +13,7 @@ const mockTodoAction = {
 
 describe('Complete todo action', () => {
     test('It should return an action object', () => {
-        const action = RemoveTodo(mockId);
+        const action = CompleteTodo(mockId);
         expect(action).toBeDefined();
         expect(action).toEqual(mockTodoAction);
     });

@@ -1,7 +1,7 @@
 import {
     ADD_TODO
-} from '../src/constants';
-import { AddTodo } from '../src/actions';
+} from '../../src/constants';
+import { AddTodo } from '../../src/actions';
 
 const mockText = 'Test';
 const mockTodoAction = {
