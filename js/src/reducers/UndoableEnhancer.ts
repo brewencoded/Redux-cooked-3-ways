@@ -39,8 +39,8 @@ const UndoableEnhancer = (reducer: Function): UndoableReducer => {
                 }
             default:
                 // Delegate handling the action to the passed reducer
-                const newPresent = reducer(present, action)
-                if (present === newPresent) {
+                const newPresent = reducer(present, action);
+                if (present === newPresent) { // TODO: check for actual equality
                     return state
                 }
                 return {
