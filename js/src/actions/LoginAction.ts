@@ -37,11 +37,13 @@ const Login = (dispatch: Dispatcher) => async (email: string, password: string) 
             })
         }
     } catch (e) {
+        const status = e.response ? e.response.status : 500;
+        const message = e.response ? e.response.message : e.message;
         dispatch({
             type: LOGIN_FAIL,
             payload: {
-                status: e.response.status,
-                message: e.response.data.message
+                status,
+                message
             }
         })
     }

@@ -17,7 +17,7 @@ export interface Todo {
 
 const Todo: Todo = {
     construct(options): ITodoModel {
-        const instance:ITodoModel = Object.create(this.proto);
+        const instance: ITodoModel = Object.create(this.proto);
         const props: TodoProps = Object.assign({}, this.props, options);
         Object.keys(props).forEach((prop) => instance[prop] = props[prop]);
         instance.id = v1();

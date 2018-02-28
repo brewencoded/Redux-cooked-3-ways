@@ -3,9 +3,9 @@ import IUserModel from "./IUserModel";
 export type UserConstructor = (options?) => IUserModel;
 
 export interface IUserProps {
-    text: string;
-    id: string | null
-    done: boolean;
+    name: string;
+    email: string | null
+    loginStatus: boolean;
 }
 
 export interface IUser {
@@ -22,9 +22,9 @@ const User: IUser = {
         return instance;
     },
     props: {
-        text: '',
-        id: null,
-        done: false
+        name: '',
+        email: null,
+        loginStatus: false
     },
     proto: {}
 };

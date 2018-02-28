@@ -27,7 +27,7 @@ router.get('/login', (req, res) => {
         res.status(200).json({
             profile: PROFILE,
             token: TOKEN,
-            message: 'Sucess'
+            message: 'Success'
         });
     } else {
         res.status(401).json({

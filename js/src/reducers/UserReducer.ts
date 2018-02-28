@@ -18,7 +18,7 @@ export interface IUserState {
 const InitialState: IUserState = {
     name: '',
     email: '',
-    loginStatus: ''
+    loginStatus: null
 };
 
 const UserReducer = (state: IUserState = InitialState, action: IAction): IUserState => {
