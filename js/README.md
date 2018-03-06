@@ -13,10 +13,10 @@
   - Watch and Hot reload: `npm run dev`
 
 **Contents**
- - [Prerequisites](PREREQS.md)
- - [10,000 foot overview](OVERVIEW.md)
- - [Actions]()
- - [Reducers]()
+ - [Prerequisites](readmes/PREREQS.md)
+ - [10,000 foot overview](readmes/OVERVIEW.md)
  - [Store]()
+ - [Actions](readmes/ACTIONS.md)
+ - [Reducers]()
  - [Changing State]()
  - [Connecting Views]()
