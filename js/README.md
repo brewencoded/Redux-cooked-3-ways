@@ -15,7 +15,7 @@
 **Contents**
  - [Prerequisites](readmes/PREREQS.md)
  - [10,000 foot overview](readmes/OVERVIEW.md)
- - [Store]()
+ - [Store](readmes/STORE.md)
  - [Actions](readmes/ACTIONS.md)
  - [Reducers]()
  - [Changing State]()

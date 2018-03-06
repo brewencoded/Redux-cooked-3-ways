@@ -22,12 +22,12 @@ const createStore = (initialState, reducer): IStore => {
     let onChange;
     let state: IStoreState = initialState || reducer();
     return {
-        getState: () => state,
+        getState: () => ({ ...state }),
         subscribe: (fn: Function) => onChange = fn,
         dispatch: (action: IAction) => {
             console.dir(action);
             state = reducer(state, action);
-            onChange();
+            onChange({ ...state });
         }
     }
 };
