@@ -166,3 +166,5 @@ console.dir(newState); // { a: 'a', b: 'b', c: 'c' }
 Learning to code and in a way that allows you to read what is happening instead of why and how, is called declarative programming. Imperative programming is the practice of writing code that describes how to do something very precisely.
 
 Functional programming focuses on being declarative. Since this is not the focus of this project we won't go any more in depth. Just know that the code will look different than you are used to.
+
+You are wrapping functionality to create the simplest lines of code that describes what you want to get, instead of creating a few line that describe how to get to a desired result.
