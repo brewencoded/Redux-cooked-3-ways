@@ -14,9 +14,10 @@
 
 **Contents**
  - [Prerequisites](readmes/PREREQS.md)
- - [10,000 foot overview](readmes/OVERVIEW.md) // immutability in practice
+ - [10,000 foot overview](readmes/OVERVIEW.md)
  - [Store](readmes/STORE.md)
  - [Actions](readmes/ACTIONS.md)
  - [Reducers](readmes/REDUCERS.md)
+ - [Reducer Enhancers](readmes/ENHANCERS.md)
  - [Connecting Views](readmes/CONNECT.md)
- 
+ - [Next Steps](readmes/NEXT.md)
