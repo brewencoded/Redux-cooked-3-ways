@@ -1,0 +1,2 @@
+# Next steps
+The best step you can take next is to look at the example code. Find all of the techniques and conventions you have seen and get an understanding of how they have been implemented here. Run the app and read through the tests.

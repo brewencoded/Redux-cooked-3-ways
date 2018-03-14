@@ -11,13 +11,11 @@ export interface IAddTodoAction extends IAction {
     }
 }
 
-const AddTodo = (text: string): IAddTodoAction => {
-    return {
-        type: ADD_TODO,
-        payload: {
-            todo: Todo.construct({ text })
-        }
-    };
-};
+const AddTodo = (text: string): IAddTodoAction => ({
+    type: ADD_TODO,
+    payload: {
+        todo: Todo.construct({ text })
+    }
+});
 
 export default AddTodo;

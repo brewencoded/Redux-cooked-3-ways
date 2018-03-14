@@ -9,13 +9,11 @@ export interface IRemoveTodo extends IAction {
     }
 }
 
-const RemoveTodo = (id: string): IRemoveTodo => {
-    return {
-        type: REMOVE_TODO,
-        payload: {
-            id
-        }
-    };
-};
+const RemoveTodo = (id: string): IRemoveTodo => ({
+    type: REMOVE_TODO,
+    payload: {
+        id
+    }
+});
 
 export default RemoveTodo;

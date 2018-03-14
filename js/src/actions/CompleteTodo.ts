@@ -9,13 +9,11 @@ export interface ICompleteTodoAction extends IAction {
     }
 }
 
-const CompleteTodo = (id: string): ICompleteTodoAction => {
-    return {
-        type: COMPLETE_TODO,
-        payload: {
-            id
-        }
-    };
-};
+const CompleteTodo = (id: string): ICompleteTodoAction => ({
+    type: COMPLETE_TODO,
+    payload: {
+        id
+    }
+});
 
 export default CompleteTodo;
