@@ -18,5 +18,5 @@
  - [Store](readmes/STORE.md)
  - [Actions](readmes/ACTIONS.md)
  - [Reducers](readmes/REDUCERS.md)
- - [Changing State]()
- - [Connecting Views]()
+ - [Connecting Views](readmes/CONNECT.md)
+ 
