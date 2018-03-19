@@ -1,0 +1,3 @@
+default: compose.kt
+	kotlinc compose.kt -include-runtime -d compose.jar
+

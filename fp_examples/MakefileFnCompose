@@ -1,0 +1,3 @@
+default: fnCompose.kt
+	kotlinc fnCompose.kt -include-runtime -d fnCompose.jar
+

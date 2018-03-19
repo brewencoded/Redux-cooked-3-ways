@@ -1,0 +1,3 @@
+default: curry-partial.kt
+	kotlinc curry-partial.kt -include-runtime -d curry-partial.jar
+
