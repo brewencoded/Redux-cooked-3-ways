@@ -6,6 +6,7 @@ import {
 import { IAction } from './IAction';
 import axios from 'axios';
 import { Dispatcher } from '../store/createStore';
+import TodosAction from './TodosAction';
 
 const setToken = (token: string) => {
     localStorage.setItem('todoAppToken', token);
@@ -27,6 +28,8 @@ const Login = (dispatch: Dispatcher) => async (email: string, password: string) 
                     token: loginResponse.data.token
                 }
             });
+            const fetchTodos = TodosAction(dispatch);
+            fetchTodos(loginResponse.data.token);
         } else {
             dispatch({
                 type: LOGIN_FAIL,
