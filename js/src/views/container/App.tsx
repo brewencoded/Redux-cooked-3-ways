@@ -8,6 +8,7 @@ import {
     CompleteTodo,
     RemoveTodo,
     LoginAction,
+    LogoutAction,
     ProfileAction,
     SaveAction
 } from '../../actions';
@@ -42,8 +43,10 @@ const mapDispatchToTodos = (dispatch: Dispatcher) => ({
 });
 const mapDispatchToLogin = (dispatch: Dispatcher) => {
     const loginThunk = LoginAction(dispatch);
+    const logoutThunk = LogoutAction(dispatch);
     return {
-        login: (email: string, password: string) => loginThunk(email, password)
+        login: (email: string, password: string) => loginThunk(email, password),
+        logout: () => logoutThunk()
     };
 };
 

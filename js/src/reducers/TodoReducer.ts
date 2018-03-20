@@ -7,7 +7,8 @@ import {
     FETCH_SUCCESS,
     SAVE_PENDING,
     SAVE_FAIL,
-    SAVE_SUCCESS
+    SAVE_SUCCESS,
+    CLEAR_STORE
 } from '../constants';
 import ITodoModel from '../models/ITodoModel';
 import { IAction } from '../actions/IAction';
@@ -81,6 +82,8 @@ const TodoReducer = (state: ITodoState = InitialState, action: IAction): ITodoSt
                 ...state,
                 persistStatus: SAVE_SUCCESS
             };
+        case CLEAR_STORE:
+            return InitialState;
         default:
             return state;
     }

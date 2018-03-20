@@ -45,9 +45,10 @@ import IUserModel from '../../models/IUserModel';
 export interface ILoginFormProps {
     user: IUserModel;
     login: (email: string, password: string) => void;
+    logout: () => void;
 }
 
-const LoginForm: React.SFC<ILoginFormProps> = ({ login, user }) => {
+const LoginForm: React.SFC<ILoginFormProps> = ({ login, logout, user }) => {
     // Input tracker
     let email: HTMLInputElement;
     let password: HTMLInputElement;
@@ -56,7 +57,7 @@ const LoginForm: React.SFC<ILoginFormProps> = ({ login, user }) => {
         return (
             <div style={headerStyle}>
                 <h3 style={welcomeStyle}>Welcome {user.name}!</h3>
-                <a style={logoutButtonStyle}>Logout</a>
+                <a style={logoutButtonStyle} onClick={logout}>Logout</a>
             </div>
         );
     } else {

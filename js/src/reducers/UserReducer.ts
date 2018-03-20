@@ -4,7 +4,8 @@ import {
     LOGIN_SUCCESS,
     PROFILE_FAIL,
     PROFILE_PENDING,
-    PROFILE_SUCCESS
+    PROFILE_SUCCESS,
+    CLEAR_STORE
 } from '../constants';
 import { IAction } from '../actions/IAction';
 import IUserModel from '../models/IUserModel';
@@ -61,6 +62,8 @@ const UserReducer = (state: IUserState = InitialState, action: IAction): IUserSt
                 ...state,
                 loginStatus: PROFILE_FAIL
             };
+            case CLEAR_STORE:
+                return InitialState;
         default:
             return state;
     }
